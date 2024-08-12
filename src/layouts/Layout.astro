@@ -1,0 +1,1086 @@
+---
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import Nav from '../components/Nav.astro';
+interface Props {
+	title: string;
+}
+
+const { title } = Astro.props; // → RECUPERA EL DATO Y LO LEE
+---
+
+<!doctype html>
+<html lang="es">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="description" content="Servicio técnico especializado en refrigeración." />
+		<meta name="viewport" content="width=device-width" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<meta name="generator" content={Astro.generator} />
+		<title>{title}</title>
+
+		<!-- SLICK SLIDER -->
+		<link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
+
+		<!-- FONTS -->
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap" rel="stylesheet">
+
+	</head>
+	<body>
+
+		<Header/>
+
+			<a target="_blank" href="https://api.whatsapp.com/send/?phone=+542224463130&text=¡Hola, Mauricio. Estoy interesad@ en tus servicios!&type=phone_number&app_absent=0" id="wsp-float-btn" title="Whatsapp">
+				<ion-icon name="logo-whatsapp"></ion-icon>
+			</a>
+
+			<div id="myModal" class="modal">
+
+				<div class="modal-content">
+					<span class="close">
+						&times;
+					</span>
+					<form id="contactForm" class="formulario-contacto">
+			
+						<div class="form-bx">
+							<label for="name">Nombre:</label>
+							<input type="text" id="name" name="name" placeholder="Nombre" required>
+						</div>
+			
+						<div class="form-bx">
+							<label for="phone">Teléfono:</label>
+							<input type="tel" id="phone" name="phone" placeholder="Telefono" required>
+						</div>
+			
+						<div class="form-bx">
+							<label for="address">Dirección:</label>
+							<input type="text" id="address" name="address" placeholder="Ejemplo 123" required>
+						</div>
+			
+						<div class="form-bx">
+							<label for="city">Localidad:</label>
+							<select id="city" name="city" required>
+								<option value="Gran Buenos Aires">Gran Buenos Aires</option>
+								<option value="Buenos Aires Provincia">Buenos Aires Provincia</option>
+							</select>
+						</div>
+			
+						<div class="form-bx">
+							<label for="service">Tipo de Servicio:</label>
+							<select id="service" name="service" required>
+								<option value="Instalación de Equipos">Instalación de Equipos</option>
+								<option value="Mantenimiento Preventivo">Mantenimiento Preventivo</option>
+								<option value="Reparación de Equipos">Reparación de Equipos</option>
+								<option value="Carga de Refrigerante">Carga de Refrigerante</option>
+							</select>
+						</div>
+			
+						<button type="submit">Enviar</button>
+					</form>
+				</div>
+			
+			</div>
+
+			<main id="main-content" transition:animate="fade">
+				<div id="nav-mobile" class="nav-mobile w-full sm:h-80 sm:fixed bg-black">
+
+					<div class="flex flex-col gap-5">
+
+						<div class="header-redes header-redes-mobile">
+							<a href="https://www.instagram.com/mauricio.bruschi/" target="_blank" class="header-redes__a" title="Instagram">
+								<ion-icon class="header-redes__icon" name="logo-instagram"></ion-icon>
+							</a>
+							<a href="https://www.facebook.com/profile.php?id=100072484952363" target="_blank" class="header-redes__a" title="Facebook">
+								<ion-icon class="header-redes__icon" name="logo-facebook"></ion-icon>
+							</a>
+							<a href="tel:1162253493" target="_blank" class="header-redes__a" title="Telefono">
+								<ion-icon class="header-redes__icon" name="call-outline"></ion-icon>
+							</a>
+						</div>
+
+						<Nav />
+
+					</div>
+
+				</div>
+				<slot />
+			</main>
+			
+			<!-- SCRIPTS -->
+			<script is:inline src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
+			<script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+			<script	script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+			<script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+
+			<script>
+
+				// Obtener el modal
+				const modal = document.getElementById("myModal") as HTMLDivElement | null;
+
+				// Verificar que el modal no sea null antes de manipularlo
+				if (modal) {
+					// Obtener el botón que abre el modal
+					const btn = document.getElementById("contactBtn") as HTMLButtonElement | null;
+
+					// Obtener el elemento <span> que cierra el modal
+					const span = document.getElementsByClassName("close")[0] as HTMLSpanElement | null;
+
+					// Verificar que el botón y el span no sean null antes de asignarles eventos
+					if (btn && span) {
+						// Cuando el usuario haga clic en el botón, abre el modal 
+						btn.onclick = function() {
+							modal.style.display = "block";
+							setTimeout(() => modal.classList.add("show"), 10); // Añadir la clase "show" con un pequeño retraso para activar la animación
+						}
+
+						// Cuando el usuario haga clic en <span> (x), cierra el modal
+						span.onclick = function() {
+							modal.classList.remove("show");
+							setTimeout(() => modal.style.display = "none", 400); // Espera la duración de la animación antes de ocultar el modal
+						}
+					}
+
+					// Cuando el usuario haga clic fuera del modal, también lo cierra
+					window.onclick = function(event) {
+						if (event.target === modal) {
+							modal.classList.remove("show");
+							setTimeout(() => modal.style.display = "none", 400); // Espera la duración de la animación antes de ocultar el modal
+						}
+					}
+				}
+
+				// Manejar el envío del formulario
+				const form = document.getElementById("contactForm") as HTMLFormElement | null;
+				if (form) {
+					form.onsubmit = function(event) {
+						event.preventDefault(); // Evitar el envío del formulario de manera tradicional
+
+						// Obtener los valores del formulario
+						const name = (document.getElementById("name") as HTMLInputElement | null)?.value || '';
+						const phone = (document.getElementById("phone") as HTMLInputElement | null)?.value || '';
+						const address = (document.getElementById("address") as HTMLInputElement | null)?.value || '';
+						const city = (document.getElementById("city") as HTMLInputElement | null)?.value || '';
+						const service = (document.getElementById("service") as HTMLSelectElement | null)?.value || '';
+
+						// Construir el mensaje
+						const message = `Hola, Ezequiel. Mi nombre es ${encodeURIComponent(name)}, soy de la localidad de ${encodeURIComponent(city)}, mi dirección es ${encodeURIComponent(address)}, mi numero de celular ${encodeURIComponent(phone)} y estoy interesad@ en: ${encodeURIComponent(service)}`;
+
+						// Enlace para WhatsApp
+						const whatsappUrl = `https://api.whatsapp.com/send?phone=+542224463130&text=${message}`; // Reemplaza 1234567890 con el número de teléfono
+
+						// Redirigir al usuario a WhatsApp
+						window.location.href = whatsappUrl;
+					}
+				}
+			
+			</script>
+			
+		</body>
+		
+	<Footer />
+</html>
+<style is:global>
+	
+	:root {
+		--accent: 136, 58, 234;
+		--principal: #004f8b;
+		--principal2: #0073ca;
+		--accent-light: 224, 204, 250;
+		--accent-dark: 49, 10, 101;
+		--accent-gradient: linear-gradient(
+			45deg,
+			rgb(var(--accent)),
+			rgb(var(--accent-light)) 30%,
+			white 60%
+		);
+		--trans-02: all .2s ease-in-out;
+	}
+	html {
+		font-family: system-ui, sans-serif;
+		background: white;
+		background-size: 224px;
+		scroll-behavior: smooth;
+	}
+	code {
+		font-family:
+			Menlo,
+			Monaco,
+			Lucida Console,
+			Liberation Mono,
+			DejaVu Sans Mono,
+			Bitstream Vera Sans Mono,
+			Courier New,
+			monospace;
+	}
+	.nav-mobile{
+		z-index: 40;
+		top: -400px;
+		background: rgb(245, 245, 245);
+		box-shadow: 0 5px 5px rgba(0, 0, 0, 0.5);
+		transition: all .3s ease-in-out;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+	}
+	.nav-hidden{
+		top: 80px;
+	}
+
+	.header-redes{
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		gap: 15px;
+	}
+	.header-redes__a{
+		background: var(--principal);
+		width: 40px;
+		height: 40px;
+		border-radius: 50%;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		color: white;
+		box-shadow: 0 0 5px rgba(0, 0, 0, 0.3	);
+		font-size: 1.2rem;
+		transition: var(--trans-02);
+	}
+	.header-redes__a:hover{
+		background: var(--principal2);
+	}
+
+	
+
+	#wsp-float-btn{
+		width: 60px;
+		height: 60px;
+		border-radius: 50%;
+		position: fixed;
+		bottom: 25px;
+		right: 25px;
+		background: #25d366;
+		z-index: 500;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		color: white;
+		font-size: 1.5rem;
+		transition: all .2s ease-in-out;
+		box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
+	}
+	#wsp-float-btn:hover{
+		background: white;
+		color: #25d366;
+	}
+
+
+	.modal{
+		display: none;
+		position: fixed;
+		z-index: 1001;
+		left: 0;
+		top: 0;
+		width: 100%;
+		height: 100%;
+		overflow: auto;
+		background-color: rgba(0, 0, 0,);
+		background-color: rgba(0, 0, 0,0.4);
+		text-align: center;
+		
+	}
+	.modal-content{
+		background-color: white;
+		margin: 15% auto;
+		padding: 20px;
+		border: solid 1px #888;
+		border-radius: 5px;
+		width: 50%;
+		transform: translateY(-300%);
+		transition: transform 0.3s ease-out;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: center;
+		position: relative;
+	}
+	.modal.show .modal-content{
+		transform: translateY(0);
+	}
+	.close{
+		color: #5c5c5c;
+		font-size: 25px;
+		font-weight: bold;
+		top: 0;
+		right: 10px;
+		position: absolute;
+		margin: 0;
+		padding: 0;
+	}
+	.close:hover,
+	.close:focus{
+		color: black;
+		text-decoration: none;
+		cursor: pointer;
+	}
+
+	.formulario-contacto{
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: center;
+		gap: 25px;
+		width: 100%;
+	}
+	.form-bx{
+		width: 100%;
+		display: flex;
+		align-items: center;
+		justify-content: flex-start;
+		gap: 15px
+	}
+	.formulario-contacto input{
+		border-bottom: solid 1px silver;
+		width: 50%;
+		outline: none;
+	}
+	.formulario-contacto button{
+		background: #25d366;
+		padding: 10px 25px;
+		border-radius: 5px;
+		margin: 0 auto;
+	}
+	.formulario-contacto button:hover{
+		background: #49ed85;
+	}
+
+
+	.span-separador{
+		display: flex;
+		width: 90%;
+		margin: 0 auto;
+		padding: 100px 0;
+		text-align: center;
+		flex-direction: column;
+		align-items: center;
+		justify-content: center;
+	}
+	.span-separador__h3{
+		color: var(--principal);
+		font-size: 2rem;
+		font-weight: normal;
+	}
+	.span-separador__h3 strong{
+		font-weight: normal;
+	}
+	.separador{
+		width: 10%;
+		height: 5px;
+		background: var(--principal);
+		margin: 10px 0;
+	}
+	.span-separador__p{
+		color: black;
+		font-size: 1.2rem;
+	}
+
+	.nosotros-seciton{
+		width: 100%;
+		height: 500px;
+		background: black;
+		display: flex;
+		align-items: center;
+		justify-content: space-around;
+	}
+	.nosotros-carousel{
+		width: 45%;
+		height: 80%;
+	}
+	.carousel-box{
+		width: 100%;
+		height: 400px;
+		position: relative;
+	}
+	.carousel-box__img{
+		width: 100%;
+		height: 100%;
+		padding: 5px;
+	}
+	.nosotros-txt{
+		width: 50%;
+	}
+	.nosotros-txt__h2{
+		font-size: 1.5rem;
+		font-weight: bold;
+		color: white;
+	}
+	.nosotros-txt__p{
+		font-size: 1.1rem;
+		color: white;
+		font-weight: normal;
+	}
+
+	.servicios-section{
+		width: 100%;
+		margin: 0 auto;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		flex-direction: column;
+		text-transform: uppercase;
+		font-weight: bold;
+		margin: 100px 0;
+		padding: 0;
+		gap: 50px;
+	}
+	.servicios__h2{
+		font-size: 1.8rem;
+		color: black;
+		border-left: solid 3px var(--principal);
+		border-bottom: solid 3px var(--principal);
+		padding: 0 0 5px 5px;
+		width: fit-content;
+		display: flex;
+		align-items: start;
+		justify-content: center;
+		gap: 10px;
+	}
+	.servicios__span{
+		color: var(--principal);
+	}
+
+	.section-title{
+		width: 90%;
+		display: flex;
+		align-items: center;
+		justify-content: start;
+	}
+
+	.servicios-cards{
+		width: 90%;
+		height: auto;
+		display: flex;
+		align-items: center;
+		justify-content: space-around;
+		flex-wrap: wrap;
+		gap: 50px;
+	}
+	.servicios-card{
+		width: 40%;
+		height: 300px;
+		max-height: 300px;
+		display: flex;
+		flex-direction: row;
+		align-items: center;
+		justify-content: center;
+		gap: 15px;
+		border-radius: 10px;
+		color: var(--principal);
+		color: #0c0c0c;
+		padding: 15px;
+		background: white;
+		box-shadow: 0px 3px 15px rgba(0, 0, 0, 0.2);
+		transition: var(--trans-02);
+		user-select: none ;
+	}
+	.servicios-card:hover{
+		transform: scale(1.05);
+		box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.3);
+	}
+	.servicios-card__h3{
+		font-weight: 500;
+		font-size: 1.5;
+		letter-spacing: 1px;
+	}
+	.servicios-card__p{
+		font-weight: lighter;
+		font-size: .9rem;
+		text-transform: none;
+	}
+	.servicios-card__ul{
+		list-style: none;
+		padding: 0;
+		margin: 0;
+	}
+	.servicios-card__li{
+		padding: 0;
+		margin: 0;
+		font-weight: normal;
+		text-transform: none;
+		font-size: .9rem;
+	}
+
+	.servicios-card__img{
+		width: 120px;
+		padding: 10px;
+		border-radius: 50%;
+		background: var(--principal2);
+		box-shadow: 0 3px 10px rgba(0, 0, 0, 0.3);
+	}
+
+	.servicios-separador{
+		width: 100%;
+		display: flex;
+		align-items: center;
+		justify-content: space-around;
+		height: 250px;
+		background: linear-gradient(to left, rgb(0, 0, 0), #0c0c0c, rgb(0, 0, 0));
+	}
+	.servicios-container-wrapp{
+		width: 100%;
+		display: flex;
+		align-items: center;
+		justify-content: space-around;
+	}
+	.servicios-bx{
+		width: 350px;
+		height: 80%;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		border-radius: 5px;
+		color: var(--principal);
+		gap: 15px;
+		color: white;
+	}
+	.servicios-bx__img{
+		width: 30%;
+		background: none;
+		padding: 10px;
+		border-radius: 50%;
+		border: solid 2px black;
+		box-shadow: 0 0 3px white;
+		filter: invert(1);
+	}
+	.servicios-bx__txt{
+		display: flex;
+		flex-direction: column;
+		font-size: 1rem;
+	}
+	.servicios-bx__txt span{
+		font-size: 1.5rem;
+	}
+
+	.galeria-section{
+		width: 100%;
+		margin: 0 auto;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		flex-direction: column;
+		text-transform: uppercase;
+		font-weight: bold;
+		gap: 50px;
+	}
+	.galeria-title__h2{
+		font-size: 1.8rem;
+		color: black;
+		border-left: solid 3px var(--principal);
+		border-bottom: solid 3px var(--principal);
+		padding: 0 0 5px 5px;
+		width: fit-content;
+		display: flex;
+		align-items: start;
+		justify-content: center;
+		gap: 10px;
+	}
+	.galeria-title{
+		width: 90%;
+		display: flex;
+		align-items: center;
+		justify-content: start;
+	}
+
+	.carousel-wrapp{
+		width: 65%;
+	}
+
+	.galeria-bx{
+		width: 250px;
+		height: 500px;
+	}
+
+	.galeria-bx__img{
+		width: 100%;
+		height: 100%;
+		padding: 25px;
+		filter: drop-shadow(0 3px 15px rgba(0, 0, 0, 0.3));
+	}
+
+	.slick-dots
+	{
+		position: absolute;
+		bottom: -5px;
+
+		display: block;
+
+		width: 100%;
+		padding: 0;
+		margin: 0;
+
+		list-style: none;
+
+		text-align: center;
+	}
+
+	.slick-dots li
+	{
+		position: relative;
+
+		display: inline-block;
+
+		width: 10px;
+		height: 10px;
+		margin: 0 5px;
+		padding: 0;
+		background: none;
+		border-radius: 50%;
+		
+
+		cursor: pointer;
+	}
+
+	.slick-dots li button
+{
+    font-size: 0;
+    line-height: 0;
+
+    display: block;
+
+    width: 10px;
+    height: 10px;
+    padding: 5px;
+
+	border: solid 1px var(--principal2);
+
+    cursor: pointer;
+
+    color: transparent;
+    border: 0;
+    outline: none;
+    background: transparent;
+}
+.slick-dots li button:hover,
+.slick-dots li button:focus
+{
+    outline: none;
+}
+.slick-dots li button:hover:before,
+.slick-dots li button:focus:before
+{
+    opacity: 1;
+}
+.slick-dots li button:before
+{
+    font-family: 'slick';
+    font-size: 6px;
+    line-height: 20px;
+
+    position: absolute;
+    top: 0;
+    left: 0;
+
+    width: 10px;
+    height: 10px;
+
+	border: solid 1px var(--principal2);
+	background: var(--principal2);
+	border: solid 1px var(--principal2);
+	border-radius: 50%;
+
+    content: '';
+    text-align: center;
+
+    opacity: .35;
+    color: black;
+
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+.slick-dots li.slick-active button:before
+{
+    opacity: .7;
+    color: black;
+	border: solid 1px var(--principal2);
+	background: var(--principal2);
+	border-radius: 50%;
+}
+
+
+
+	.span-separador2{
+		width: 100%;
+		height: 100px;
+		background: #0c0c0c;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		flex-direction: column;
+		color: white;
+		margin-top: 50px;
+	}
+	.span-separador2 h3{
+		font-size: 1.5rem;
+		text-transform: uppercase;
+		font-weight: 400;
+	}
+
+	.location-section{
+		width: 100%;
+		height: auto;
+		max-height: 350px;
+	}
+
+	.anim-entrada{
+		animation-name: anim-entrada;
+		animation-duration: 3s;
+	}
+
+
+	@keyframes anim-entrada {
+		0%{
+			opacity: 0;
+		}
+		100%{
+			opacity: 1;
+		}
+	}
+
+
+	@media only screen and (max-width: 419px) {
+
+		.nav-hidden{
+			top: 66px;
+		}
+
+		.modal-content{
+			background-color: #fefefe;
+			margin: 50% auto;
+			padding: 20px;
+			border: solid 1px #888;
+			width: 90%;
+			transform: translateY(-100%);
+			transition: transform 0.3s ease-out;
+		}
+
+		.span-separador__h3{
+			font-size: 1.5rem;
+			font-weight: normal;
+			width: 100%;
+		}
+
+		.span-separador {
+			width: 95%;
+			margin: 0 auto;
+			padding: 100px 0;
+			gap: 10px;
+		}
+
+		.nosotros-seciton{
+			flex-direction: column;
+			height: auto;
+			padding: 15px;
+			gap: 10px;
+			width: 100%;
+		}
+		.nosotros-carousel{
+			width: 100%;
+		}
+		.nosotros-txt{
+			width: 100%;
+		}
+		.carousel-box{
+			height: 250px;
+		}
+		.nosotros-txt__h2{
+			font-size: 1.2rem;
+			font-weight: 500;
+			letter-spacing: 1px;
+			text-align: center;
+			margin: 5px 0;
+		}
+		.nosotros-txt__p {
+			font-size: 1rem;
+		}
+		
+
+
+		.servicios-separador{
+			height: auto;
+			padding: 15px 0;
+		}
+		.servicios-container-wrapp{
+			flex-direction: column;
+			justify-content: flex-start;
+			gap: 25px;
+		}
+
+		.servicios-cards{
+			justify-content: center;
+			gap: 50px;
+		}
+		.servicios-card{
+			width: 100%;
+			min-height: 400px;
+			max-height: 400px;
+			flex-direction: column;
+		}
+
+		.servicios-bx{
+			width: 100%;
+			justify-content: flex-start;
+			padding-left: 35px;
+		}
+		.servicios-bx__img{
+			width: 30%;
+			padding: 10px;
+		}
+		
+		.servicios-bx__txt{
+			font-size: .9rem;
+		}
+
+		.section-title, .galeria-title{
+			justify-content: center;
+		}
+		.servicios__h2, .galeria-title__h2{
+			font-size: 1.5rem;
+		}
+		
+		.span-separador2 h3{
+			font-size: 1rem;
+			text-transform: uppercase;
+			text-align: center;
+		}
+
+		.carousel-wrapp{
+			width: 80%;
+		}
+
+		.galeria-bx{
+			height: 450px;
+		}
+
+	}
+
+
+	@media only screen and (min-width: 420px){
+
+		.carousel-wrapp{
+			width: 80%;
+		}
+
+		.header-redes-mobile{
+			display: none;
+		}
+
+		.hero-txt__h1{
+			font-size: 1.5rem;
+		}
+
+		.modal-content{
+			background-color: #fefefe;
+			margin: 50% auto;
+			padding: 20px;
+			border: solid 1px #888;
+			width: 90%;
+			transform: translateY(-100%);
+			transition: transform 0.3s ease-out;
+		}
+
+		.nosotros-seciton{
+			flex-direction: column;
+			height: auto;
+			padding: 15px;
+			gap: 10px;
+		}
+		.nosotros-carousel{
+			width: 100%;
+		}
+		.carousel-box{
+			height: 300px;
+		}
+		.nosotros-txt{
+			width: 100%;
+		}
+		.nosotros-txt__h2{
+			text-align: center;
+			font-weight: 400;
+		}
+
+		.servicios-section{
+			padding: 0;
+		}
+		.section-title, .galeria-title{
+			justify-content: center;
+		}
+		.servicios__h2, .galeria-title__h2{
+			font-size: 1.5rem;
+		}
+
+		.servicios-cards{
+			justify-content: center;
+			gap: 50px;
+		}
+		.servicios-card{
+			width: 100%;
+			min-height: 400px;
+			max-height: 400px;
+			flex-direction: column;
+		}
+
+		.servicios-separador{
+			height: auto;
+			padding: 15px 0;
+		}
+		.servicios-container-wrapp{
+			flex-direction: column;
+			justify-content: flex-start;
+			gap: 25px;
+		}
+
+		.servicios-bx{
+			width: 100%;
+			justify-content: flex-start;
+			padding-left: 25px;
+		}
+		.servicios-bx__img{
+			width: 30%;
+		}
+		.servicios-bx__txt{
+			font-size: .9rem;
+		}
+		
+		.span-separador2 h3{
+			font-size: 1rem;
+		}
+	}
+
+	@media only screen and (min-width: 767px){
+
+		.formulario-contacto{
+			width: 80%;
+			margin: 0 auto;
+		}
+		.formulario-contacto input{
+			width: 100%;
+		}
+
+		.modal-content{
+			margin: 30% auto;
+			width: 80%;
+		}
+
+		.nosotros-seciton {
+			width: 100%;
+			height: auto;
+			background: linear-gradient(to left, rgb(0, 0, 0), #0c0c0c, rgb(0, 0, 0));
+			display: flex;
+			align-items: center;
+			justify-content: space-around;
+		}
+		.nosotros-carousel{
+			width: 80%;
+		}
+		.nosotros-txt__h2{
+			font-weight: 500;
+			margin: 0 0 5px 0;
+		}
+
+		.servicios-container-wrapp{
+			flex-direction: row;
+		}
+
+		.section-title{
+			width: 95%;
+		}
+		.servicios-cards{
+			width: 95%;
+		}
+		.servicios-bx__img{
+			padding: 10px;
+		}
+		.servicios-bx__txt span{
+			font-size: 1rem;
+		}
+
+		.section-title,
+		.galeria-title{
+			justify-content: flex-start;
+			width: 95%;
+		}
+
+		.span-separador2 h3{
+			font-size: 1.2rem;
+		}
+
+	}
+
+	@media only screen and (min-width: 1023px){
+
+		.modal-content{
+			margin: 20% auto;
+			width: 50%;
+		}
+
+		.nosotros-txt{
+			width: 80%;
+		}
+
+
+		.servicios-card{
+			width: 40%;
+			min-height: 400px;
+			max-height: 400px;
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			justify-content: center;
+			gap: 15px;
+			border-radius: 10px;
+			color: var(--principal);
+			color: #0c0c0c;
+			padding: 15px;
+			background: white;
+			box-shadow: 0px 3px 15px rgba(0, 0, 0, 0.2);
+			transition: var(--trans-02);
+			user-select: none ;
+		}
+	}
+
+	@media only screen and (min-width: 1439px){
+
+		.nosotros-seciton{
+			width: 100%;
+			flex-direction: row;
+			padding: 25px 50px;
+		}
+		.nosotros-carousel{
+			width: 35%;
+		}
+		.nosotros-txt{
+			width: 50%;
+		}
+		.nosotros-txt__h2{
+			font-weight: 500;
+			letter-spacing: 1px;
+		}
+
+		.servicios-container-wrapp{
+			padding-left: 15%;
+		}
+		.servicios-bx{
+			padding: 0;
+		}
+		.servicios-bx__img{
+			width: 20%;
+			padding: 10px;
+		}
+
+		.servicios-card{
+			flex-direction: row;
+		}
+
+	}
+</style>

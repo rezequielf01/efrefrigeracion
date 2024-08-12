@@ -1,0 +1,75 @@
+---
+---
+
+<nav class="">
+    <ul class="flex lg:flex-row sm:flex-col items-center content-center gap-4 sm:gap-5">
+        <li class="flex flex-col items-center justify-center gap-0">
+            <a href="#nosotros" title="Sobre nosotros"  class="xl:text-xl lg:text-base flex flex-col items-center justify-center gap-0">Quiénes somos
+                <span class="nav__span"></span>
+            </a>
+        
+        </li>
+        <li class="flex flex-col items-center justify-center gap-0">
+            <a href="#servicios" title="Servicios"  class="xl:text-xl lg:text-base flex flex-col items-center justify-center gap-0">Servicios
+                <span class="nav__span"></span>
+            </a>
+        </li>
+        <li class="flex flex-col items-center justify-center gap-0">
+            <a href="#galeria" title="Servicios"  class="xl:text-xl lg:text-base flex flex-col items-center justify-center gap-0">Galeria de fotos
+                <span class="nav__span"></span>
+            </a>
+        </li>
+        <li class="flex flex-col items-center justify-center gap-0">
+            <a href="#contacto" title="Servicios"  class="xl:text-xl lg:text-base flex flex-col items-center justify-center gap-0">Contactar
+                <span class="nav__span"></span>
+            </a>
+        </li>
+    </ul>
+</nav>
+
+<style>
+    .header-redes{
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		gap: 15px;
+	}
+	.header-redes__a{
+		background: var(--principal);
+		width: 40px;
+		height: 40px;
+		border-radius: 50%;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		color: white;
+		box-shadow: 0 0 5px rgba(0, 0, 0, 0.3	);
+		font-size: 1.2rem;
+		transition: var(--trans-02);
+	}
+	.header-redes__a:hover{
+		background: var(--principal2);
+	}
+
+
+    nav ul li{
+        width: fit-content;
+    }
+    .nav__span{
+        width: 0;
+        background: var(--color-principal);
+        height: 3px;
+        border-radius: 2px;
+        transition: all .2s ease-in-out;
+    }
+    nav ul li:hover .nav__span{
+        width: 90%;
+    }
+    nav ul li a{
+        transition: color .2s ease-in-out;
+    }
+    nav ul li a:hover{
+        color: var(--color-principal);
+    }
+    
+</style>

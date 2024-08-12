@@ -1,0 +1,122 @@
+---
+// import { Image } from 'astro:assets';
+
+---
+
+<section class="hero-container">
+
+    <div class="hero-txt anim-entrada">
+		<h1 class="hero-txt__h1">EFRefrigeración</h1>
+        <h2 class="hero-txt__h2">Servicio Técnico Especializado</h2>
+        <span class="hero-txt__span">Enfriamos tus problemas, garantizamos tu confort</span>
+        <span class="hero-txt__btn" id="contactBtn">Presupuestar</span>
+    </div>
+
+</section>
+
+
+<style>
+
+    
+    .hero-container{
+		width: 100%;
+		height: 600px;
+		display: flex;
+		align-items: center;
+		justify-content: flex-start;
+		background: linear-gradient(to left,rgba(0, 0, 0, 0.3) 40%, rgba(0, 0, 0, 0.6) 60% 100%),url(../images/hero-perforaciones.jpg) no-repeat center / cover ;
+		background-attachment: fixed;
+	}
+	.hero-logo{
+		width: 125px;
+		height: 125px;
+		border-radius: 50%;
+		box-shadow: 0 0 15px rgba(255, 255, 255, 0.2);
+	}
+	.hero-logo__img{
+		width: 100%;
+		height: 100%;
+		border-radius: 50%;
+	}
+
+	.hero-txt{
+		width: 100%;
+		height: auto;
+		display: flex;
+		flex-direction: column;
+		align-items: start;
+		justify-content: center;
+		padding-left: 5%;
+		gap: 0px;
+		color: white;
+		font-weight: bold;
+	}
+	.hero-txt__h2{
+		font-size: 1.2rem;
+		text-transform: uppercase;
+	}
+	.hero-txt__h1{
+		font-size: 2rem;
+	}
+	.hero-txt__span{
+		font-size: 1.2rem;
+		font-weight: normal;
+		text-transform: uppercase;
+		margin-top: 5px;
+	}
+	.hero-txt__btn{
+		background: var(--principal);
+		color: white;
+		padding: 10px 20px;
+		border-radius: 10px;
+		text-transform: uppercase;
+		margin-top: 15px;
+		cursor: pointer;
+		transition: var(--trans-02);
+	}
+	.hero-txt__btn:hover{
+		background: var(--principal2);
+	}
+
+
+	@media only screen and (max-width: 419px) {
+		.hero-container{
+			height: 100vh;
+		}
+		.hero-txt__h1{
+			font-size: 1.5rem;
+		}
+		.hero-txt__span{
+			font-size: 1rem;
+			font-weight: 500;
+		}
+
+	}
+
+	@media only screen and (min-width: 420px){
+		.hero-container{
+			height: 100vh;
+		}
+	}
+
+	@media only screen and (min-width: 767px){
+		.hero-container{
+			height: 100vh;
+		}
+	}
+
+	@media only screen and (min-width: 1023px){
+		
+		.hero-container{
+			height: 90vh;
+		}
+	}
+
+	@media only screen and (min-width: 1439px){
+		.hero-container{
+			height: 92vh;
+		}
+	}
+
+
+</style>

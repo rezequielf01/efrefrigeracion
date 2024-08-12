@@ -1,0 +1,302 @@
+---
+// NOTA - ACA CODIGO JS
+import Layout from '../layouts/Layout.astro';
+import Hero from '../components/Hero.astro';
+import Footer from '../components/Footer.astro';
+import ServiceCard from '../components/ServiceCard.astro';
+import ContactCard from '../components/ContactCard.astro';
+import WorkerCard from '../components/WorkerCard.astro';
+
+---
+
+<Layout title="EFRefrigeracion - Técnicos especializados">
+
+	<Hero />
+
+	<span class="span-separador anim-entrada">
+		<h3 class="span-separador__h3"><strong>Servicio técnico</strong> especializado en <strong>reparaciónes de aires acondicionados y heladeras</strong></h3>
+		<span class="separador"></span>
+		<p class="span-separador__p">Empresa de amplia trayectoria dedicada a la <strong>reparación</strong> y <strong>mantenimiento</strong> de aires acondicionados y heladeras</p>
+	</span>
+
+	<section class="nosotros-seciton" id="nosotros">
+
+		<div class="nosotros-carousel">
+		
+			<div class="carousel">
+				<div class="carousel-box">
+					<img class="carousel-box__img anim-entrada" src="/images/nosotros1.jpeg" alt="">
+				</div>
+			</div>
+
+		</div>
+
+		<div class="nosotros-txt">
+			<h2 class="nosotros-txt__h2">¿Quiénes somos?</h2>
+			<p class="nosotros-txt__p">Somos EFRefrigeración, un equipo técnico especializado en reparaciones de heladeras y aires acondicionados con más de 40 años de experiencia.
+				Nos destacamos por nuestra habilidad para resolver problemas complejos y brindar un servicio eficiente. Contamos con técnicos altamente capacitados que utilizan tecnología de vanguardia para asegurar la máxima calidad en cada reparación. 
+			</p>
+		</div>
+
+	</section>
+
+	<section class="servicios-section" id="servicios">
+
+		<div class="section-title">
+			<h2 class="servicios__h2"><span class="servicios__span">Nuestros</span>servicios</h2>
+		</div>
+
+		<div class="servicios-cards">
+
+			<div class="servicios-card">
+				<img class="servicios-card__img" src="/images/instalacion-de-equipos.png" alt="Perforación para bombas centrífugas">
+				<div>
+					<h3 class="servicios-card__h3">Instalación de Equipos</h3>
+					<p class="servicios-card__p">Nuestros técnicos altamente capacitados están listos para instalar una amplia gama de equipos de refrigeración y climatización, incluyendo heladeras, aires acondicionados, y sistemas de refrigeración comercial e industrial. Nos aseguramos de que cada instalación sea realizada con precisión, configurando el sistema para que funcione de manera óptima desde el primer momento.</p>
+				</div>
+			</div>
+
+			<div class="servicios-card">
+				<img class="servicios-card__img" src="/images/mantenimiento.png" alt="Perforación para bombas sumergidas">
+				<div>
+					<h3 class="servicios-card__h3">Mantenimiento Preventivo</h3>
+					<p class="servicios-card__p">La clave para un funcionamiento eficiente y duradero de tus equipos es el mantenimiento preventivo. Ofrecemos servicios completos de inspección y limpieza, que incluyen:</p>
+					<ul class="servicios-card__ul">
+						<li class="servicios-card__li"><b>Revisión y limpieza de componentes</b>: Filtros, bobinas, y ventiladores.</li>
+						<li class="servicios-card__li"><b>Lubricación</b>: Mecanismos y partes móviles para minimizar el desgaste.</li>
+						<li class="servicios-card__li"><b>Ajuste de niveles de refrigerante</b>: Garantizando un rendimiento eficiente y evitando daños.</li>
+					</ul>
+				</div>
+			</div>
+
+			<div class="servicios-card">
+				<img class="servicios-card__img" src="/images/reparacion-aire-acondicionado2.png" alt="Reparaciones de aires acondicionados">
+				<div>
+					<h3 class="servicios-card__h3">Reparación de Equipos</h3>
+					<p class="servicios-card__p">Cuando enfrentas problemas con tus sistemas de refrigeración o climatización, nuestro equipo está listo para proporcionar soluciones rápidas y efectivas. Realizamos:</p>
+					<ul class="servicios-card__ul">
+						<li class="servicios-card__li"><b>Diagnóstico preciso</b>: Identificación detallada del problema.</li>
+						<li class="servicios-card__li"><b>Reparación de fallos</b>: Solución de problemas eléctricos, mecánicos y de refrigeración.</li>
+						<li class="servicios-card__li"><b>Sustitución de piezas</b>: Utilizamos repuestos de alta calidad para asegurar la durabilidad y funcionamiento óptimo de tu equipo.</li>
+					</ul>
+				</div>
+			</div>
+
+			<div class="servicios-card">
+				<img class="servicios-card__img" src="/images/reparacion-aire-acondicionado.png" alt="Reparaciones de perforación">
+				<div>
+					<h3 class="servicios-card__h3">Reparación de Sistemas de Climatización</h3>
+					<p class="servicios-card__p">Nuestros servicios no se limitan a la refrigeración; también nos especializamos en la reparación y mantenimiento de sistemas de calefacción, ventilación y aire acondicionado (HVAC). Ofrecemos:</p>
+					<ul class="servicios-card__ul">
+						<li class="servicios-card__li"><b>Diagnóstico y reparación de fallos</b>: Para asegurar que tu sistema de climatización funcione de manera eficiente.</li>
+						<li class="servicios-card__li"><b>Ajuste y calibración de termostatos y controles</b>: Optimización del control de temperatura y confort en tu espacio.</li>
+					</ul>
+				</div>
+			</div>
+
+			<div class="servicios-card">
+				<img class="servicios-card__img" src="/images/carga-de-refrigerante.png" alt="Reparaciones de perforación">
+				<div>
+					<h3 class="servicios-card__h3">Carga de Refrigerante</h3>
+					<p class="servicios-card__p">El refrigerante es crucial para el rendimiento de tus equipos. Nuestros servicios incluyen:</p>
+					<ul class="servicios-card__ul">
+						<li class="servicios-card__li"><b>Carga y ajuste de niveles de refrigerante</b>: Aseguramos que tu sistema funcione de manera eficiente.</li>
+						<li class="servicios-card__li"><b>Reparación de fugas</b>: Localización y reparación de fugas de refrigerante para evitar daños y pérdida de eficiencia.</li>
+					</ul>
+				</div>
+			</div>
+
+			<div class="servicios-card">
+				<img class="servicios-card__img" src="/images/lista-de-verificacion.png" alt="Perforación simple">
+				<div>
+					<h3 class="servicios-card__h3">Verificación y Cumplimiento de Normativas</h3>
+					<p class="servicios-card__p">Nos aseguramos de que todos tus sistemas cumplan con las normativas y regulaciones locales. Realizamos:</p>
+					<ul class="servicios-card__ul">
+						<li class="servicios-card__li"><b>Verificación de cumplimiento</b>: Inspección para garantizar que tus sistemas operen de acuerdo con los estándares de seguridad y eficiencia.</li>
+					</ul>
+				</div>
+			</div>
+
+		</div>
+
+		<div class="servicios-separador">
+
+			<div class="servicios-container-wrapp">
+
+				<div class="servicios-bx">
+					<img class="servicios-bx__img" src="/images/instalacion-de-equipos.png" alt="Mauricio Bruschi perforaciónes">
+					<div class="servicios-bx__txt">
+						<span>+300</span>
+						<b>Instalaciones</b>
+					</div>
+				</div>
+				<div class="servicios-bx">
+					<img class="servicios-bx__img" src="/images/mantenimiento.png" alt="Mauricio Bruschi perforaciónes">
+					<div class="servicios-bx__txt">
+						<span>+500</span>
+						<b>Mantenimientos</b>
+					</div>
+				</div>
+				<div class="servicios-bx">
+					<img class="servicios-bx__img" src="/images/reparacion-aire-acondicionado.png" alt="Perforaciones Mauricio Bruschi">
+					<div class="servicios-bx__txt">
+						<span>+100</span>
+						<b>Reparaciones</b>
+					</div>
+				</div>
+
+			</div>
+
+		</div>
+
+	</section>
+
+	<section class="galeria-section" id="galeria">
+
+		<div class="galeria-title">
+			<h2 class="galeria-title__h2"><span class="servicios__span">Nuestros</span>trabajos</h2>
+		</div>
+		
+
+		<div class="carousel-wrapp">
+			
+			<div class="galeria-carousel">
+
+				<div class="galeria-bx">
+					<img class="galeria-bx__img"  src="/images/nosotros2.jpeg" alt="Mauricio Bruschi perforaciones">
+				</div>
+				<div class="galeria-bx">
+					<img class="galeria-bx__img"  src="/images/nosotros3.png" alt="Perforaciones de agua">
+				</div>
+				<div class="galeria-bx">
+					<img class="galeria-bx__img"  src="/images/nosotros3.jpeg" alt="Mauricio Bruschi">
+				</div>
+				<div class="galeria-bx">
+					<img class="galeria-bx__img"  src="/images/nosotros5.jpeg" alt="Mauricio Bruschi perforaciones">
+				</div>
+
+			</div>
+
+		</div>
+
+	</section>
+
+	<div class="span-separador2">
+		<h3>Trabajos con garantía y precios accesibles</h3>
+	</div>
+
+	<section class="location-section" id="contacto">
+		<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3275.6773096337006!2d-58.471173123334715!3d-34.81405946863892!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95bcd155395dec33%3A0x10127b3d303da2d4!2sMonte%20Grande!5e0!3m2!1ses!2sar!4v1723484145615!5m2!1ses!2sar" width="100%" height="300" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+	</section>
+
+
+</Layout>
+
+<style>
+	main {
+		margin: auto;
+		padding: 1rem;
+		width: 800px;
+		max-width: calc(100% - 2rem);
+		color: white;
+		font-size: 20px;
+		line-height: 1.6;
+	}
+</style>
+
+<script>
+
+	$('.carousel').slick({
+		dots: false,
+		infinite: true,
+		arrows: false,
+		autoplay: true,
+		speed: 500,
+		slidesToShow: 1,
+		slidesToScroll: 1,
+		responsive: [
+			{
+			breakpoint: 1025,
+			settings: {
+				slidesToShow: 1,
+				slidesToScroll: 1,
+				infinite: true,
+				arrows: false,
+				dots: false
+			}
+			},
+			{
+			breakpoint: 770,
+			settings: {
+				arrows: false,
+				slidesToShow: 1,
+				slidesToScroll: 1
+			}
+			},
+			{
+			breakpoint: 481,
+			settings: {
+				slidesToShow: 1,
+				slidesToScroll: 1
+			}
+			},
+			{
+			breakpoint: 321,
+			settings: {
+				arrows: false,
+				slidesToShow: 1,
+				slidesToScroll: 1
+			}
+			}
+		]
+	});
+</script>
+
+<script>
+	$('.galeria-carousel').slick({
+		dots: true,
+		infinite: true,
+		arrows: false,
+		autoplay: true,
+		speed: 500,
+		slidesToShow: 3,
+		slidesToScroll: 3,
+		responsive: [
+			{
+			breakpoint: 1025,
+			settings: {
+				slidesToShow: 2,
+				slidesToScroll: 2,
+				infinite: true,
+				arrows: false,
+				dots: true
+			}
+			},
+			{
+			breakpoint: 770,
+			settings: {
+				arrows: false,
+				slidesToShow: 2,
+				slidesToScroll: 2,
+				dots: true
+			}
+			},
+			{
+			breakpoint: 481,
+			settings: {
+				slidesToShow: 1,
+				slidesToScroll: 1,
+				dots: true
+			}
+			},
+			{
+			breakpoint: 321,
+			settings: {
+				arrows: false,
+				slidesToShow: 1,
+				slidesToScroll: 1
+			}
+			}
+		]
+	});
+</script>

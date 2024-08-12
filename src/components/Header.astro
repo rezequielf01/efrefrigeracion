@@ -1,0 +1,183 @@
+---
+import { Image } from 'astro:assets';
+import Nav from '../components/Nav.astro';
+---
+
+<header class="z-50 xl:w-4/5 lg:p-2 xl:mx-auto lg:w-full flex items-center justify-around lg:relative sm:fixed sm:top-0 sm:left-0 sm:w-full sm:bg-white sm:p-2" style="box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);">
+
+    <div class="header-img">
+        <Image src="/images/logo.jpg" alt="Mauricio Bruschi" width="150" height="20" />
+    </div>
+
+
+    <div class="items-center lg:flex sm:hidden">
+        <Nav />
+    </div>
+
+
+    <div class="header-redes">
+        <a href="https://www.instagram.com/mauricio.bruschi/" target="_blank" class="header-redes__a" title="Instagram">
+            <ion-icon class="header-redes__icon" name="logo-instagram"></ion-icon>
+        </a>
+        <a href="https://www.facebook.com/profile.php?id=100072484952363" target="_blank" class="header-redes__a" title="Facebook">
+            <ion-icon class="header-redes__icon" name="logo-facebook"></ion-icon>
+        </a>
+        <a href="tel:2224463130" target="_blank" class="header-redes__a" title="Telefono">
+            <ion-icon class="header-redes__icon" name="call-outline"></ion-icon>
+        </a>
+    </div>
+
+    <button class="menu-burguer lg:hidden sm:flex" id="menu-burguer" onclick="this.classList.toggle('opened');this.setAttribute('aria-expanded', this.classList.contains('opened'))" aria-label="Main Menu">
+        <svg width="40" height="40" viewBox="0 0 100 100">
+          <path class="line line1" d="M 20,29.000046 H 80.000231 C 80.000231,29.000046 94.498839,28.817352 94.532987,66.711331 94.543142,77.980673 90.966081,81.670246 85.259173,81.668997 79.552261,81.667751 75.000211,74.999942 75.000211,74.999942 L 25.000021,25.000058" />
+          <path class="line line2" d="M 20,50 H 80" />
+          <path class="line line3" d="M 20,70.999954 H 80.000231 C 80.000231,70.999954 94.498839,71.182648 94.532987,33.288669 94.543142,22.019327 90.966081,18.329754 85.259173,18.331003 79.552261,18.332249 75.000211,25.000058 75.000211,25.000058 L 25.000021,74.999942" />
+        </svg>
+    </button>
+
+
+</header>
+
+<script>
+    let btn = document.getElementById('menu-burguer');
+    let navMobile = document.getElementById("nav-mobile");
+    btn?.addEventListener('click', function() {
+        navMobile?.classList.toggle("nav-hidden");
+    });
+</script>
+
+<style>
+    .header{
+		width: 100%;
+		height: 100px;
+		background: white;
+		display: flex;
+		align-items: center;
+		justify-content: space-around;
+		position: fixed;
+		top: 0;
+	}
+
+	.header-img{
+		width: 70px;
+		height: 70px;
+	}
+	.header-img img{
+		width: 150px;
+		height: 100%;
+	}
+    .menu-burguer {
+        background-color: transparent;
+        border: none;
+        cursor: pointer;
+        padding: 0;
+    }
+    .line {
+        fill: none;
+        stroke: black;
+        stroke-width: 5;
+        transition: stroke-dasharray 600ms cubic-bezier(0.4, 0, 0.2, 1),
+            stroke-dashoffset 600ms cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    .line1 {
+        stroke-dasharray: 60 1007;
+        stroke-width: 5;
+    }
+    .line2 {
+        stroke-dasharray: 60 60;
+        stroke-width: 5;
+    }
+    .line3 {
+        stroke-dasharray: 60 1007;
+        stroke-width: 5;
+    }
+    .opened .line1 {
+        stroke-dasharray: 90 1007;
+        stroke-dashoffset: -134;
+        stroke-width: 5;
+    }
+        .opened .line2 {
+        stroke-dasharray: 1 60;
+        stroke-dashoffset: -30;
+        stroke-width: 5;
+    }
+    .opened .line3 {
+        stroke-dasharray: 90 1007;
+        stroke-dashoffset: -134;
+        stroke-width: 5;
+    }
+
+    .header-redes{
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		gap: 15px;
+	}
+	.header-redes__a{
+		background: var(--principal);
+		width: 40px;
+		height: 40px;
+		border-radius: 50%;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		color: white;
+		box-shadow: 0 0 5px rgba(0, 0, 0, 0.3	);
+		font-size: 1.2rem;
+		transition: var(--trans-02);
+	}
+	.header-redes__a:hover{
+		background: var(--principal2);
+	}
+
+    @media only screen and (max-width: 419px){
+        header{
+            height: 80px;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+        }
+        .header-img{
+            width: 150px;
+            height: 75px;
+        }
+        .header-redes{
+            gap: 5px;
+            display: none;
+        }
+        .header-redes__a{
+            width: 35px;
+            height: 35px;
+        }
+    }
+
+    @media only screen and (min-width: 420px) { 
+        header{
+            height: 80px;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+        }
+        .header-redes{
+            gap: 10px;
+        }
+        .header-img{
+            width: 150px;
+            height: 80px;
+        }
+    }
+
+    @media only screen and (min-width: 760px) { 
+        header{
+            justify-content: space-between;
+            padding: 0 25px;
+        }
+    } 
+    
+    
+    @media only screen and (min-width: 1439px) { 
+        header{
+            width: 100%;
+            justify-content: space-around;
+            padding: 0;
+        }
+    } 
+
+
+</style>
